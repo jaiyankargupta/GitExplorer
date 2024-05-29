@@ -110,3 +110,12 @@ document.addEventListener("DOMContentLoaded", function () {
     tour.start();
   }
 });
+
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    // Prevent the form from being submitted
+    event.preventDefault();
+    
+    // Perform additional actions or validations here
+    console.log("Form submission prevented!");
+  });
