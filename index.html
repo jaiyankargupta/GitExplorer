@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitExplore</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/css/shepherd.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-brand">GitExplorer</a>
+        <ul class="navbar-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="./contactpage.html">Contact Us</a></li>
+          <li><button id="tourButton">Start Tour</button></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1>Welcome to GitExplorer</h1>
+        <p>
+          Discover and explore top GitHub repositories based on programming
+          language, topics, and sorting options.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+<div class="container">
+    <div class="controls">
+        <form>
+      <label for="language">Programming Language:</label>
+      <input type="text" id="customLanguage" placeholder="Custom Language" required />
+  
+      <label for="topic">Topic:</label>
+      <input type="text" id="topic" placeholder="Optional" />
+  
+      <label>Sort by:</label>
+      <input type="radio" id="stars" name="sort" value="stars" required />
+      <label for="stars">Stars</label>
+      <input type="radio" id="forks" name="sort" value="forks" required />
+      <label for="forks">Forks</label>
+  
+      <button id="searchButton">Search</button>
+        </form>
+    </div>
+    <h1>Top GitHub repositories Here:</h1>
+    <div id="repositories" class="repositories"></div>
+  </div>
+  
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <h3>GitExplorer</h3>
+          <p>&copy; 2024 GitExplorer. All Rights Reserved.</p>
+        </div>
+        <div class="footer-right">
+          <a href="https://twitter.com/jaiyankargupta" target="_blank"
+            >Twitter</a
+          >
+          <a href="https://github.com/jaiyankargupta" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/jaiyankargupta/" target="_blank"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/js/shepherd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
