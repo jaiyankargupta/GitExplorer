@@ -25,6 +25,3 @@ GitExplorer is a web application designed to facilitate the discovery and explor
 
 - **Jaiyankar Gupta**: Initial development and implementation of GitExplorer.
 
-## License
-
-This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file included in the repository.
