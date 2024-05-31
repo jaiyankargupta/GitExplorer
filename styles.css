@@ -155,7 +155,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  min-height: 10vh;
+  min-height: 20vh;
 }
 .repository-card {
   width: 300px;
