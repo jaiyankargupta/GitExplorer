@@ -200,7 +200,7 @@ body {
   border-radius: 10px;
 }
 .flip-card-front {
-  background-color: #000000;
+  background-color: #5800ef;
   color: white;
 }
 .flip-card-front h3 {
@@ -223,7 +223,7 @@ body {
 }
 .flip-card-back {
   background-color: #f9f9f9;
-  color: #000000;
+  color: #5800ef;
   transform: rotateY(180deg);
   text-align: left;
 }
