@@ -34,9 +34,9 @@ body {
   display: flex;
   gap: 20px;
 }
-.navbar-menu li {
+.navbar-container  .navbar-menu li a{
   display: inline;
-  margin-top: 13px;
+  margin-top: 28px;
 }
 .navbar-menu a {
   text-decoration: none;
@@ -155,7 +155,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  min-height: 100vh;
+  min-height: 10vh;
 }
 .repository-card {
   width: 300px;
@@ -297,21 +297,19 @@ footer.footer {
     margin-left: 0;
   }
   .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 
 @media (max-width: 480px) {
   .navbar-brand {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   .navbar-menu {
     flex-direction: column;
     align-items: center;
   }
-  .navbar-menu li {
-    margin-bottom: 10px;
-  }
+  
   .controls {
     width: 100%;
     padding: 0 20px;
