@@ -1,19 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.getElementById("searchButton");
-  const tourButton = document.getElementById("tourButton");
   const repositoriesContainer = document.getElementById("repositories");
 
   searchButton.addEventListener("click", fetchRepositories);
-  tourButton.addEventListener("click", startTour);
 
-  async function fetchRepositories() {
+  async function fetchRepositories(event) {
+    event.preventDefault();
+
     const language = document.getElementById("customLanguage").value;
     const topic = document.getElementById("topic").value;
-    const sort = document.querySelector('input[name="sort"]:checked').value;
+    const sortOptions = Array.from(document.querySelectorAll('input[name="sort"]:checked')).map(el => el.value);
 
-    let query = `https://api.github.com/search/repositories?q=language:${language}`;
-    if (topic) query += `+topic:${topic}`;
-    query += `&sort=${sort}&order=desc`;
+    let query = "https://api.github.com/search/repositories?q=";
+    const filters = [];
+
+    if (language) filters.push(`language:${language}`);
+    if (topic) filters.push(`topic:${topic}`);
+
+    query += filters.join('+');
+
+    if (sortOptions.length > 0) {
+      query += `&sort=${sortOptions.join(',')}&order=desc`;
+    }
 
     // Update button text to indicate search in progress
     searchButton.textContent = "Searching...";
@@ -22,7 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const response = await fetch(query);
       const data = await response.json();
-      displayRepositories(data.items);
+      const repositories = data.items;
+
+      displayRepositories(repositories);
     } catch (error) {
       console.error("Error fetching repositories:", error);
     } finally {
@@ -34,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function displayRepositories(repositories) {
     repositoriesContainer.innerHTML = "";
-    const fragment = document.createDocumentFragment();
 
     repositories.forEach((repo, index) => {
       const repoCard = document.createElement("div");
@@ -62,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
 
-      fragment.appendChild(repoCard);
+      repositoriesContainer.appendChild(repoCard);
 
       // Add animation delay for a cascading effect
       setTimeout(() => {
@@ -70,9 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
         repoCard.style.transform = "translateY(0)";
       }, index * 100);
     });
-
-    repositoriesContainer.appendChild(fragment);
   }
+});
+
 
   function startTour() {
     const tour = new Shepherd.Tour({
@@ -124,4 +133,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Perform additional actions or validations here
     console.log("Form submission prevented!");
   });
-});
+
