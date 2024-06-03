@@ -32,9 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json();
       const repositories = data.items;
 
-      displayRepositories(repositories);
+      if (repositories.length === 0) {
+        repositoriesContainer.innerHTML = "<h2>No repositories found.</h2>";
+      } else {
+        displayRepositories(repositories);
+      }
     } catch (error) {
       console.error("Error fetching repositories:", error);
+      repositoriesContainer.innerHTML = "<h2>An error occurred while fetching repositories.</h2>";
+      
     } finally {
       // Revert button text after search completes
       searchButton.textContent = "Search";
@@ -83,54 +89,53 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-  function startTour() {
-    const tour = new Shepherd.Tour({
-      useModalOverlay: true,
-      defaultStepOptions: {
-        cancelIcon: {
-          enabled: true,
-        },
-        classes: "shadow-md bg-purple-dark",
-        scrollTo: { behavior: "smooth", block: "center" },
+function startTour() {
+  const tour = new Shepherd.Tour({
+    useModalOverlay: true,
+    defaultStepOptions: {
+      cancelIcon: {
+        enabled: true,
       },
-    });
-
-    tour.addStep({
-      id: "language",
-      text: "Select the programming language you are interested in.",
-      attachTo: { element: "#customLanguage", on: "bottom" },
-      buttons: [{ text: "Next", action: tour.next }],
-    });
-
-    tour.addStep({
-      id: "topic",
-      text: "Optionally enter a topic to narrow down your search.",
-      attachTo: { element: "#topic", on: "bottom" },
-      buttons: [{ text: "Next", action: tour.next }],
-    });
-
-    tour.addStep({
-      id: "sort",
-      text: "Choose to sort repositories by stars or forks.",
-      attachTo: { element: "#stars", on: "bottom" },
-      buttons: [{ text: "Next", action: tour.next }],
-    });
-
-    tour.addStep({
-      id: "search",
-      text: "Click the Search button to fetch top repositories matching your criteria.",
-      attachTo: { element: "#searchButton", on: "bottom" },
-      buttons: [{ text: "Finish", action: tour.complete }],
-    });
-
-    tour.start();
-  }
-
-  document.getElementById("myForm").addEventListener("submit", function(event) {
-    // Prevent the form from being submitted
-    event.preventDefault();
-    
-    // Perform additional actions or validations here
-    console.log("Form submission prevented!");
+      classes: "shadow-md bg-purple-dark",
+      scrollTo: { behavior: "smooth", block: "center" },
+    },
   });
 
+  tour.addStep({
+    id: "language",
+    text: "Select the programming language you are interested in.",
+    attachTo: { element: "#customLanguage", on: "bottom" },
+    buttons: [{ text: "Next", action: tour.next }],
+  });
+
+  tour.addStep({
+    id: "topic",
+    text: "Optionally enter a topic to narrow down your search.",
+    attachTo: { element: "#topic", on: "bottom" },
+    buttons: [{ text: "Next", action: tour.next }],
+  });
+
+  tour.addStep({
+    id: "sort",
+    text: "Choose to sort repositories by stars or forks.",
+    attachTo: { element: "#stars", on: "bottom" },
+    buttons: [{ text: "Next", action: tour.next }],
+  });
+
+  tour.addStep({
+    id: "search",
+    text: "Click the Search button to fetch top repositories matching your criteria.",
+    attachTo: { element: "#searchButton", on: "bottom" },
+    buttons: [{ text: "Finish", action: tour.complete }],
+  });
+
+  tour.start();
+}
+
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  // Prevent the form from being submitted
+  event.preventDefault();
+  
+  // Perform additional actions or validations here
+  console.log("Form submission prevented!");
+});
