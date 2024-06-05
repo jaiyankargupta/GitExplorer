@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.getElementById("searchButton");
   const repositoriesContainer = document.getElementById("repositories");
+  const tourButton = document.getElementById("tourButton"); // Add this line to select the tour button
+  
+  startTour();
+  // Call startTour() when the "Start Tour" button is clicked
+  tourButton.addEventListener("click", startTour);
 
   searchButton.addEventListener("click", fetchRepositories);
 
@@ -112,6 +117,13 @@ function startTour() {
     id: "topic",
     text: "Optionally enter a topic to narrow down your search.",
     attachTo: { element: "#topic", on: "bottom" },
+    buttons: [{ text: "Next", action: tour.next }],
+  });
+
+  tour.addStep({
+    id: "keyword",
+    text: "Optionally enter keyword to narrow down your search.",
+    attachTo: { element: "#keyword", on: "bottom" },
     buttons: [{ text: "Next", action: tour.next }],
   });
 
