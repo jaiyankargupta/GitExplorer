@@ -129,7 +129,7 @@ function startTour() {
 
   tour.addStep({
     id: "sort",
-    text: "Choose to sort repositories by stars or forks.",
+    text: "Choose to Sort repositories by Commits, Issues, Pull Requests, Forks and Stars",
     attachTo: { element: "#stars", on: "bottom" },
     buttons: [{ text: "Next", action: tour.next }],
   });
