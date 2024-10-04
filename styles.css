@@ -45,31 +45,61 @@ body {
   margin-top: 28px;
 }
 
+
 .navbar-menu a {
   text-decoration: none;
   color: white;
-  font-size: 1.2em;
+  /* Text color */
+  font-size: 1.5em;
+  /* Increase font size for prominence */
+  padding: 10px 20px;
+  /* Increased padding for a better feel */
+  border-radius: 5px;
+  /* Rounded corners */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Smooth transitions */
 }
 
+
 .navbar-menu a:hover {
-  background: #000;
-  border-radius: 5px;
+  color: rgb(255, 204, 0);
+
+  transform: scale(1.1);
+
 }
+
+/* Home Link Specific Styles */
+.navbar-menu a.home {
+  font-weight: bold;
+  /* Make it bold */
+  -webkit-text-stroke: 0.5px white;
+  /* Subtle outline for text */
+}
+
 
 .navbar-brand {
   font-size: 2em;
   font-weight: bold;
   text-decoration: none;
   color: white;
+  /* Text color */
   -webkit-text-stroke: 1px white;
+  /* Outline for text */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Smooth transitions */
+  padding: 5px 15px;
+  /* Increased padding for a better feel */
+  border-radius: 5px;
+  /* Rounded corners */
 }
 
+
 .navbar-brand:hover {
-  background-color: rgb(229, 255, 0);
-  color: black;
-  border-radius: 3px;
-  padding: 2px 10px;
+  color: rgb(255, 204, 0);
+  transform: scale(1.05);
+
 }
+
 
 #tourButton {
   border-radius: 5px;
@@ -90,7 +120,7 @@ body {
   background-color: #5800ef;
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 15px 20px;
 }
 
 .hero-section h1 {
@@ -396,6 +426,114 @@ footer.footer {
   }
 }
 
+/* Toggle Switch Styles */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 24px;
+  display: inline-block;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s;
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+.toggle-switch input:checked+.switch {
+  background-color: #66bb6a;
+}
+
+.toggle-switch input:checked+.switch::before {
+  transform: translateX(26px);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+
+  h1 {
+    color: white;
+  }
+
+}
+
+body.dark-mode .navbar {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .navbar a,
+body.dark-mode .navbar button,
+body.dark-mode .navbar .switch {
+  color: #e0e0e0;
+}
+
+body.dark-mode .hero-section {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .container {
+  background-color: #1e1e1e;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .controls input,
+body.dark-mode .controls select,
+body.dark-mode .controls button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+body.dark-mode .repository-card {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .flip-card-front {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .flip-card-back {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .footer {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode a {
+  color: #90caf9;
+}
+
 
 /* //  Loader   */
 .loader {
@@ -431,4 +569,5 @@ footer.footer {
   100% {
     transform: rotate(360deg);
   }
+
 }

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.getElementById("searchButton");
   const repositoriesContainer = document.getElementById("repositories");
   const tourButton = document.getElementById("tourButton");
+
   const loader = document.querySelector(".loader");
   const loadMoreButton = document.createElement("button");
   loadMoreButton.textContent = "Load More";
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentPage = 1;
   let currentQuery = "";
+
 
   startTour();
   tourButton.addEventListener("click", startTour);
@@ -22,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const language = document.getElementById("customLanguage").value;
     const topic = document.getElementById("topic").value;
+
     const keyword = document.getElementById("keyword").value;
+
     const sortOptions = Array.from(
       document.querySelectorAll('input[name="sort"]:checked')
     ).map((el) => el.value);
@@ -40,11 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
       query += `&sort=${sortOptions.join(",")}&order=desc`;
     }
 
+
     query += `&page=${page}&per_page=10`;
 
     currentQuery = query;
 
     showLoader();
+
+
 
     try {
       const response = await fetch(query);
@@ -67,7 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
       repositoriesContainer.innerHTML =
         "<h2>An error occurred while fetching repositories.</h2>";
     } finally {
+
       hideLoader();
+
     }
   }
 
@@ -83,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
       repoCard.style.opacity = "0";
       repoCard.style.transform = "translateY(20px)";
       repoCard.innerHTML = `
+
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="${repo.owner.avatar_url}" alt="${
@@ -99,11 +109,10 @@ document.addEventListener("DOMContentLoaded", function () {
               <p>Owner: ${repo.owner.login}</p>
               <p>Open Issues: ${repo.open_issues_count}</p>
               <p>Bio: ${repo.owner.bio || "No bio available."}</p>
+
             </div>
-            <a href="${repo.html_url}" target="_blank">View on GitHub</a>
           </div>
-        </div>
-      `;
+        `;
 
       repositoriesContainer.appendChild(repoCard);
 
@@ -184,4 +193,5 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       console.log("Form submission prevented!");
     });
+
 });
