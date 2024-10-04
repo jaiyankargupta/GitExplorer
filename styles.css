@@ -40,36 +40,87 @@ body {
   gap: 20px;
 }
 
-.navbar-container .navbar-menu li a {
-  display: inline;
-  margin-top: 28px;
+
+/* Navbar Container Styles */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: transparent;
+
 }
 
+/* Navbar Menu Styles */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+
+}
+
+.navbar-menu li {
+  display: flex;
+  align-items: center;
+}
+
+/* Navbar Link Styles */
+/* Navbar Link Styles */
 .navbar-menu a {
   text-decoration: none;
   color: white;
-  font-size: 1.2em;
-}
-
-.navbar-menu a:hover {
-  background: #000;
+  /* Text color */
+  font-size: 1.5em;
+  /* Increase font size for prominence */
+  padding: 10px 20px;
+  /* Increased padding for a better feel */
   border-radius: 5px;
+  /* Rounded corners */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Smooth transitions */
 }
 
+/* Hover Effects for Navbar Links */
+.navbar-menu a:hover {
+  color: rgb(255, 204, 0);
+
+  transform: scale(1.1);
+
+}
+
+/* Home Link Specific Styles */
+.navbar-menu a.home {
+  font-weight: bold;
+  /* Make it bold */
+  -webkit-text-stroke: 0.5px white;
+  /* Subtle outline for text */
+}
+
+
+/* Navbar Brand Styles */
 .navbar-brand {
   font-size: 2em;
   font-weight: bold;
   text-decoration: none;
   color: white;
+  /* Text color */
   -webkit-text-stroke: 1px white;
+  /* Outline for text */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Smooth transitions */
+  padding: 5px 15px;
+  /* Increased padding for a better feel */
+  border-radius: 5px;
+  /* Rounded corners */
 }
 
+/* Hover Effects for Brand */
 .navbar-brand:hover {
-  background-color: rgb(229, 255, 0);
-  color: black;
-  border-radius: 3px;
-  padding: 2px 10px;
+  color: rgb(255, 204, 0);
+  transform: scale(1.05);
+
 }
+
 
 #tourButton {
   border-radius: 5px;
@@ -90,7 +141,7 @@ body {
   background-color: #5800ef;
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 15px 20px;
 }
 
 .hero-section h1 {
