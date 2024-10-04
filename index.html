@@ -1,89 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitExplore</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/css/shepherd.css" />
-    <meta name="description" content="Discover and explore top GitHub repositories based on programming language, topics, and sorting options." />
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/css/shepherd.css"
+    />
+    <meta
+      name="description"
+      content="Discover and explore top GitHub repositories based on programming language, topics, and sorting options."
+    />
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="./index.html" class="navbar-brand">GitExplorer</a>
-            <ul class="navbar-menu">
-                <li><a href="./index.html">Home</a></li>
-                <li><button id="tourButton">Start Tour</button></li>
-            </ul>
-           
-        </div>
+      <div class="navbar-container">
+        <a href="./index.html" class="navbar-brand">GitExplorer</a>
+        <ul class="navbar-menu">
+          <li><a href="./index.html">Home</a></li>
+          <li><button id="tourButton">Start Tour</button></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero-section">
-        <div class="hero-content">
-            <h1>Welcome to GitExplorer</h1>
-            <p>Discover and explore top GitHub repositories based on programming language, topics, and sorting options.</p>
-        </div>
+      <div class="hero-content">
+        <h1>Welcome to GitExplorer</h1>
+        <p>
+          Discover and explore top GitHub repositories based on programming
+          language, topics, and sorting options.
+        </p>
+      </div>
     </header>
 
     <!-- Main Content -->
     <main class="container">
-        <section class="controls">
-            <form id="myForm">
-                <div class="input-box">
-                    <label for="customLanguage">Programming Language:</label>
-                    <input type="text" id="customLanguage" placeholder="Optional" />
+      <section class="controls">
+        <form id="myForm">
+          <div class="input-box">
+            <label for="customLanguage">Programming Language:</label>
+            <input type="text" id="customLanguage" placeholder="Optional" />
 
-                    <label for="topic">Topic:</label>
-                    <input type="text" id="topic" placeholder="Optional" />
+            <label for="topic">Topic:</label>
+            <input type="text" id="topic" placeholder="Optional" />
 
-                    <label for="keyword">Keyword:</label>
-                    <input type="text" id="keyword" placeholder="Optional" />
+            <label for="keyword">Keyword:</label>
+            <input type="text" id="keyword" placeholder="Optional" />
+          </div>
+          <fieldset>
+            <legend>Sort by:</legend>
+            <label for="commits">Commits</label>
+            <input type="checkbox" id="commits" name="sort" value="commits" />
+            <label for="issues">Issues</label>
+            <input type="checkbox" id="issues" name="sort" value="issues" />
+            <label for="pulls">Pull Requests</label>
+            <input type="checkbox" id="pulls" name="sort" value="pulls" />
+            <label for="forks">Forks</label>
+            <input type="checkbox" id="forks" name="sort" value="forks" />
+            <label for="stars">Stars</label>
+            <input type="checkbox" id="stars" name="sort" value="stars" />
+          </fieldset>
 
-                    
-                </div>
-                <fieldset>
-                    <legend>Sort by:</legend>
-                    <label for="commits">Commits</label>
-                    <input type="checkbox" id="commits" name="sort" value="commits" />
-                    <label for="issues">Issues</label>
-                    <input type="checkbox" id="issues" name="sort" value="issues" />
-                    <label for="pulls">Pull Requests</label>
-                    <input type="checkbox" id="pulls" name="sort" value="pulls" />
-                    <label for="forks">Forks</label>
-                    <input type="checkbox" id="forks" name="sort" value="forks" />
-                    <label for="stars">Stars</label>
-                    <input type="checkbox" id="stars" name="sort" value="stars" />
-                </fieldset>
-
-                <button type="submit" id="searchButton">Search</button>
-            </form>
-        </section>
-        <section>
-            <h1>Top GitHub Repositories Here!</h1>
-            <div id="repositories" class="repositories"></div>
-        </section>
+          <button type="submit" id="searchButton">Search</button>
+        </form>
+      </section>
+      <section>
+        <h1>Top GitHub Repositories Here!</h1>
+        <span class="loader"></span>.
+        <div id="repositories" class="repositories"></div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>GitExplorer</h3>
-                <p>&copy; 2024 GitExplorer. All Rights Reserved.</p>
-            </div>
-            <div class="footer-right">
-                <a href="https://twitter.com/jaiyankargupta" target="_blank">Twitter</a>
-                <a href="https://github.com/jaiyankargupta" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/jaiyankargupta/" target="_blank">LinkedIn</a>
-            </div>
+      <div class="footer-container">
+        <div class="footer-left">
+          <h3>GitExplorer</h3>
+          <p>&copy; 2024 GitExplorer. All Rights Reserved.</p>
         </div>
+        <div class="footer-right">
+          <a href="https://twitter.com/jaiyankargupta" target="_blank"
+            >Twitter</a
+          >
+          <a href="https://github.com/jaiyankargupta" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/jaiyankargupta/" target="_blank"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/js/shepherd.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
