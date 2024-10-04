@@ -278,8 +278,16 @@ body {
 }
 
 /* Footer */
-footer.footer {
+footer.footer + .slider:before {
   background-color: #5800ef;
+  color: white;
+  text-align: left;
+  width: 100%;
+  padding: 9px;
+  box-sizing: border-box;
+}
+footer.footer + .slider {
+  background-color: #000000;
   color: white;
   text-align: left;
   width: 100%;
