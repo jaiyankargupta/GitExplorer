@@ -1,14 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.getElementById("searchButton");
   const repositoriesContainer = document.getElementById("repositories");
-  const tourButton = document.getElementById("tourButton"); // Add this line to select the tour button
-  
-  startTour();
-  // Call startTour() when the "Start Tour" button is clicked
-  tourButton.addEventListener("click", startTour);
+  const tourButton = document.getElementById("tourButton");
+  const themeToggle = document.getElementById("themeToggle"); // Add theme toggle button reference
 
+  // Set initial theme based on local storage or default to light mode
+  const currentTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.add(`${currentTheme}-mode`);
+
+  startTour();
+  tourButton.addEventListener("click", startTour);
   searchButton.addEventListener("click", fetchRepositories);
 
+  // Theme toggle event listener
+  document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("themeToggle"); // Make sure you have this element in your HTML
+  
+    themeToggle.addEventListener("click", function () {
+      const isDarkMode = document.body.classList.toggle("dark-mode");
+      document.body.classList.toggle("light-mode", !isDarkMode);
+      console.log("dark ", isDarkMode)
+      // Save the current theme in local storage
+      localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+      
+    });
+  });
+  
   async function fetchRepositories(event) {
     event.preventDefault();
 
@@ -93,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 function startTour() {
   const tour = new Shepherd.Tour({
     useModalOverlay: true,
@@ -122,14 +138,14 @@ function startTour() {
 
   tour.addStep({
     id: "keyword",
-    text: "Optionally enter keyword to narrow down your search.",
+    text: "Optionally enter a keyword to narrow down your search.",
     attachTo: { element: "#keyword", on: "bottom" },
     buttons: [{ text: "Next", action: tour.next }],
   });
 
   tour.addStep({
     id: "sort",
-    text: "Choose to Sort repositories by Commits, Issues, Pull Requests, Forks and Stars",
+    text: "Choose to sort repositories by commits, issues, pull requests, forks, and stars.",
     attachTo: { element: "#stars", on: "bottom" },
     buttons: [{ text: "Next", action: tour.next }],
   });

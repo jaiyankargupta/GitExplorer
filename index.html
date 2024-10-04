@@ -16,8 +16,14 @@
             <ul class="navbar-menu">
                 <li><a href="./index.html">Home</a></li>
                 <li><button id="tourButton">Start Tour</button></li>
+                <li>
+                    <label class="switch">
+                        <input type="checkbox" id="modeToggle">
+                        <span class="slider"></span>
+                    </label>
+                   
+                </li>
             </ul>
-           
         </div>
     </nav>
 
@@ -42,8 +48,6 @@
 
                     <label for="keyword">Keyword:</label>
                     <input type="text" id="keyword" placeholder="Optional" />
-
-                    
                 </div>
                 <fieldset>
                     <legend>Sort by:</legend>
@@ -85,5 +89,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/js/shepherd.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        const toggle = document.getElementById('modeToggle');
+
+        // Check for saved user preference in localStorage
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggle.checked = true; // Set the toggle switch to "on"
+        }
+
+        // Toggle event listener
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Save the user's preference in localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
