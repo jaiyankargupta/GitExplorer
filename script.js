@@ -1,12 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.getElementById("searchButton");
   const repositoriesContainer = document.getElementById("repositories");
-  const tourButton = document.getElementById("tourButton"); // Add this line to select the tour button
-  
-  startTour();
-  // Call startTour() when the "Start Tour" button is clicked
-  tourButton.addEventListener("click", startTour);
+  const tourButton = document.getElementById("tourButton");
+  const darkModeToggle = document.getElementById("darkModeToggle");
 
+  // Initialize Dark Mode based on localStorage
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    darkModeToggle.checked = true;
+  }
+
+  // Dark Mode Toggle Event
+  darkModeToggle.addEventListener("change", () => {
+    if (darkModeToggle.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("darkMode", "disabled");
+    }
+  });
+
+  startTour();
+  tourButton.addEventListener("click", startTour);
   searchButton.addEventListener("click", fetchRepositories);
 
   async function fetchRepositories(event) {
@@ -14,7 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const language = document.getElementById("customLanguage").value;
     const topic = document.getElementById("topic").value;
-    const sortOptions = Array.from(document.querySelectorAll('input[name="sort"]:checked')).map(el => el.value);
+    const sortOptions = Array.from(
+      document.querySelectorAll('input[name="sort"]:checked')
+    ).map((el) => el.value);
 
     let query = "https://api.github.com/search/repositories?q=";
     const filters = [];
@@ -22,13 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (language) filters.push(`language:${language}`);
     if (topic) filters.push(`topic:${topic}`);
 
-    query += filters.join('+');
+    query += filters.join("+");
 
     if (sortOptions.length > 0) {
-      query += `&sort=${sortOptions.join(',')}&order=desc`;
+      query += `&sort=${sortOptions.join(",")}&order=desc`;
     }
 
-    // Update button text to indicate search in progress
     searchButton.textContent = "Searching...";
     searchButton.disabled = true;
 
@@ -44,10 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("Error fetching repositories:", error);
-      repositoriesContainer.innerHTML = "<h2>An error occurred while fetching repositories.</h2>";
-      
+      repositoriesContainer.innerHTML =
+        "<h2>An error occurred while fetching repositories.</h2>";
     } finally {
-      // Revert button text after search completes
       searchButton.textContent = "Search";
       searchButton.disabled = false;
     }
@@ -62,29 +78,30 @@ document.addEventListener("DOMContentLoaded", function () {
       repoCard.style.opacity = "0";
       repoCard.style.transform = "translateY(20px)";
       repoCard.innerHTML = `
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="${repo.owner.avatar_url}" alt="${repo.owner.login}" class="avatar">
-            <h3>${repo.name}</h3>
-            <p>★ ${repo.stargazers_count}</p>
-            <small>Forks: ${repo.forks_count}</small>
-            <small>Language: ${repo.language}</small>
-          </div>
-          <div class="flip-card-back">
-            <p>${repo.description || "No description available."}</p>
-            <div class="details">
-              <p>Owner: ${repo.owner.login}</p>
-              <p>Open Issues: ${repo.open_issues_count}</p>
-              <p>Bio: ${repo.owner.bio || "No bio available."}</p>
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="${repo.owner.avatar_url}" alt="${
+        repo.owner.login
+      }" class="avatar">
+              <h3>${repo.name}</h3>
+              <p>★ ${repo.stargazers_count}</p>
+              <small>Forks: ${repo.forks_count}</small>
+              <small>Language: ${repo.language}</small>
             </div>
-            <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+            <div class="flip-card-back">
+              <p>${repo.description || "No description available."}</p>
+              <div class="details">
+                <p>Owner: ${repo.owner.login}</p>
+                <p>Open Issues: ${repo.open_issues_count}</p>
+                <p>Bio: ${repo.owner.bio || "No bio available."}</p>
+              </div>
+              <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+            </div>
           </div>
-        </div>
-      `;
+        `;
 
       repositoriesContainer.appendChild(repoCard);
 
-      // Add animation delay for a cascading effect
       setTimeout(() => {
         repoCard.style.opacity = "1";
         repoCard.style.transform = "translateY(0)";
@@ -92,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
 
 function startTour() {
   const tour = new Shepherd.Tour({
@@ -144,10 +160,7 @@ function startTour() {
   tour.start();
 }
 
-document.getElementById("myForm").addEventListener("submit", function(event) {
-  // Prevent the form from being submitted
+document.getElementById("myForm").addEventListener("submit", function (event) {
   event.preventDefault();
-  
-  // Perform additional actions or validations here
   console.log("Form submission prevented!");
 });
