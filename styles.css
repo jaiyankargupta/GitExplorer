@@ -40,32 +40,12 @@ body {
   gap: 20px;
 }
 
-
-/* Navbar Container Styles */
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: transparent;
-
+.navbar-container .navbar-menu li a {
+  display: inline;
+  margin-top: 28px;
 }
 
-/* Navbar Menu Styles */
-.navbar-menu {
-  list-style: none;
-  display: flex;
-  gap: 20px;
 
-}
-
-.navbar-menu li {
-  display: flex;
-  align-items: center;
-}
-
-/* Navbar Link Styles */
-/* Navbar Link Styles */
 .navbar-menu a {
   text-decoration: none;
   color: white;
@@ -80,7 +60,7 @@ body {
   /* Smooth transitions */
 }
 
-/* Hover Effects for Navbar Links */
+
 .navbar-menu a:hover {
   color: rgb(255, 204, 0);
 
@@ -97,7 +77,6 @@ body {
 }
 
 
-/* Navbar Brand Styles */
 .navbar-brand {
   font-size: 2em;
   font-weight: bold;
@@ -114,7 +93,7 @@ body {
   /* Rounded corners */
 }
 
-/* Hover Effects for Brand */
+
 .navbar-brand:hover {
   color: rgb(255, 204, 0);
   transform: scale(1.05);
@@ -555,6 +534,40 @@ body.dark-mode a {
   color: #90caf9;
 }
 
-body.dark-mode a:hover {
-  color: #bbdefb;
+
+/* //  Loader   */
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #FFF;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid #FF3D00;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+
 }
