@@ -7,7 +7,7 @@ body {
   -ms-overflow-style: none;
   overflow-y: scroll;
   /* Ensure vertical scrollbar doesn't appear on content overflow */
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f5f7fa;
@@ -45,7 +45,6 @@ body {
   margin-top: 28px;
 }
 
-
 .navbar-menu a {
   text-decoration: none;
   color: white;
@@ -60,12 +59,10 @@ body {
   /* Smooth transitions */
 }
 
-
 .navbar-menu a:hover {
   color: rgb(255, 204, 0);
 
   transform: scale(1.1);
-
 }
 
 /* Home Link Specific Styles */
@@ -75,7 +72,6 @@ body {
   -webkit-text-stroke: 0.5px white;
   /* Subtle outline for text */
 }
-
 
 .navbar-brand {
   font-size: 2em;
@@ -93,13 +89,10 @@ body {
   /* Rounded corners */
 }
 
-
 .navbar-brand:hover {
   color: rgb(255, 204, 0);
   transform: scale(1.05);
-
 }
-
 
 #tourButton {
   border-radius: 5px;
@@ -179,7 +172,7 @@ body {
   margin-top: 20px;
 }
 
-.controls input[type="radio"] {
+.controls input[type='radio'] {
   margin-bottom: 10px;
 }
 
@@ -201,6 +194,10 @@ body {
   background-color: #f6fe03;
   color: #333;
   font-weight: 900;
+}
+
+#rateLimitMessage {
+  color: #ff3d00;
 }
 
 #repositories {
@@ -341,7 +338,6 @@ footer.footer {
   color: #ddd;
 }
 
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .controls {
@@ -453,7 +449,7 @@ footer.footer {
 }
 
 .switch::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 18px;
   width: 18px;
@@ -464,11 +460,11 @@ footer.footer {
   transition: transform 0.4s;
 }
 
-.toggle-switch input:checked+.switch {
+.toggle-switch input:checked + .switch {
   background-color: #66bb6a;
 }
 
-.toggle-switch input:checked+.switch::before {
+.toggle-switch input:checked + .switch::before {
   transform: translateX(26px);
 }
 
@@ -480,7 +476,6 @@ body.dark-mode {
   h1 {
     color: white;
   }
-
 }
 
 body.dark-mode .navbar {
@@ -534,14 +529,13 @@ body.dark-mode a {
   color: #90caf9;
 }
 
-
 /* //  Loader   */
 .loader {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 4px solid #FFF;
+  border-top: 4px solid #fff;
   border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
@@ -556,7 +550,7 @@ body.dark-mode a {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border-left: 4px solid #FF3D00;
+  border-left: 4px solid #ff3d00;
   border-bottom: 4px solid transparent;
   animation: rotation 0.5s linear infinite reverse;
 }
@@ -569,5 +563,4 @@ body.dark-mode a {
   100% {
     transform: rotate(360deg);
   }
-
 }
