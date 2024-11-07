@@ -20,8 +20,20 @@
       <div class="navbar-container">
         <a href="./index.html" class="navbar-brand">GitExplorer</a>
         <ul class="navbar-menu">
-          <li><a href="./index.html">Home</a></li>
-          <li><button id="tourButton">Start Tour</button></li>
+          <li class="navbar-item">
+            <a href="./index.html">Home</a>
+          </li>
+          <li class="navbar-item">
+            <button id="tourButton">Start Tour</button>
+          </li>
+          <li
+            class="navbar-item"
+            id="favReposBtnContainer"
+            style="display: none"
+          >
+            <!-- Placeholder for Favorite Repos Button when user is authenticated -->
+          </li>
+          <li class="navbar-item"><div id="user-info"></div></li>
         </ul>
       </div>
     </nav>
@@ -69,7 +81,7 @@
       </section>
       <section>
         <h1>Top GitHub Repositories Here!</h1>
-        <p id="rateLimitMessage" ></p>
+        <p id="rateLimitMessage"></p>
         <span class="loader"></span>.
         <div id="repositories" class="repositories"></div>
       </section>
@@ -95,6 +107,10 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/shepherd.js@8.0.0/dist/js/shepherd.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="user.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="handleStarRepo.js"></script>
+    <script type="module" src="handleFavReposBtn.js"></script>
+    <script type="module" src="handleUnstarRepo.js"></script>
   </body>
 </html>
