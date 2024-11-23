@@ -1,3 +1,6 @@
+import { fetchUserData } from "./user.js";
+import { handleStarRepo } from "./handleStarRepo.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.getElementById("searchButton");
   const repositoriesContainer = document.getElementById("repositories");
@@ -126,29 +129,38 @@ document.addEventListener("DOMContentLoaded", function () {
       repoCard.style.opacity = "0";
       repoCard.style.transform = "translateY(20px)";
       repoCard.innerHTML = `
-
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="${repo.owner.avatar_url}" alt="${
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <img src="${repo.owner.avatar_url}" alt="${
         repo.owner.login
       }" class="avatar">
-            <h3>${repo.name}</h3>
-            <p>★ ${repo.stargazers_count}</p>
-            <small>Forks: ${repo.forks_count}</small>
-            <small>Language: ${repo.language}</small>
+                  <h3>${repo.name}</h3>
+                  <p>★ ${repo.stargazers_count}</p>
+                  <small>Forks: ${repo.forks_count}</small>
+                  <small>Language: ${repo.language}</small>
+              </div>
+              <div class="flip-card-back">
+                  <p>${repo.description || "No description available."}</p>
+                  <div class="details">
+                      <p>Owner: ${repo.owner.login}</p>
+                      <p>Open Issues: ${repo.open_issues_count}</p>
+                      <p>Bio: ${repo.owner.bio || "No bio available."}</p>
+                      <a href="${
+                        repo.html_url
+                      }" target="_blank">View Repository</a>
+                      <button class="star-btn" data-owner="${
+                        repo.owner.login
+                      }" data-repo="${repo.name}">⭐</button>
+                  </div>
+              </div>
           </div>
-          <div class="flip-card-back">
-            <p>${repo.description || "No description available."}</p>
-            <div class="details">
-              <p>Owner: ${repo.owner.login}</p>
-              <p>Open Issues: ${repo.open_issues_count}</p>
-              <p>Bio: ${repo.owner.bio || "No bio available."}</p>
-
-            </div>
-          </div>
-        `;
+      `;
 
       repositoriesContainer.appendChild(repoCard);
+
+      // Handle click event to Star repositories Button
+      const starButton = repoCard.querySelector(".star-btn");
+      handleStarRepo(starButton);
 
       setTimeout(() => {
         repoCard.style.opacity = "1";
@@ -317,6 +329,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     tour.start();
   }
+
+  // Fetch user data to display Login/Logout button
+  fetchUserData();
 
   document
     .getElementById("myForm")
